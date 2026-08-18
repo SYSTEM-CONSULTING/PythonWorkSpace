@@ -1,0 +1,11 @@
+import re
+
+log = """
+[2025-08-26 16:00] INFO User login: alice
+[2025-08-26 16:01] ERROR Disk full
+[2025-08-26 16:02] INFO User login: bob
+"""
+
+pattern = re.compile(r"\[(.*?)\] (INFO|ERROR) (.+)")
+for time, level, msg in pattern.findall(log):
+    print(f"{time} | {level:<5} | {msg}")
