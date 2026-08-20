@@ -1,7 +1,8 @@
 import socket
 
 # Öffentliche IP deiner FritzBox hier eintragen (oder DynDNS-Adresse, z.B. dahier.dynv6.net)
-HOSTS = ["dahier.dynv6.net","fritz.box","web.de"]
+HOSTS = ["dahier.dynv6.net","fritz.box","web.de","google.com","yahoo.com","facebook.com","twitter.com","instagram.com","linkedin.com","github.com","stackoverflow.com","reddit.com","wikipedia.org","amazon.com","ebay.com","paypal.com","netflix.com","hulu.com","disneyplus.com","spotify.com"
+         ]
 
 
 # List of Ports, die geprüft werden sollen (beliebig erweiterbar)
