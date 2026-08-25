@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import socket
 
 # Öffentliche IP deiner FritzBox hier eintragen (oder DynDNS-Adresse, z.B. dahier.dynv6.net)
