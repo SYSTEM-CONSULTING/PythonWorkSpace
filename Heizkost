@@ -1,0 +1,59 @@
+import matplotlib.pyplot as plt
+
+# Daten
+years = [2020, 2021, 2022, 2023, 2024, 2025, 2026]
+prices = [9.8, 10.2, 13.0, 17.5, 14.8, 13.3, 13.34]
+
+plt.style.use("seaborn-v0_8-whitegrid")
+fig, ax = plt.subplots(figsize=(11,6), dpi=300)
+
+# Markierung Energiekrise
+ax.axvspan(2022, 2023, color="#f4b6b6", alpha=0.35)
+ax.text(2022.5, 17.8, "Energiekrise",
+        ha="center", va="bottom",
+        fontsize=11, color="darkred")
+
+# Linie
+ax.plot(
+    years,
+    prices,
+    color="#0b5ea8",
+    linewidth=3,
+    marker="o",
+    markersize=8,
+)
+
+# Werte beschriften
+for x, y in zip(years, prices):
+    ax.text(x, y+0.2, f"{y:.2f}", ha="center", fontsize=9)
+
+ax.set_title(
+    "München (SWM) – Entwicklung des Fernwärme-Arbeitspreises 2020–2026",
+    fontsize=16,
+    weight="bold",
+)
+
+ax.set_xlabel("Jahr", fontsize=12)
+ax.set_ylabel("Arbeitspreis (ct/kWh, brutto)", fontsize=12)
+
+ax.set_ylim(8, 18)
+ax.set_xlim(2019.8, 2026.2)
+
+ax.grid(True, color="#d9d9d9")
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+
+plt.figtext(
+    0.01,
+    0.01,
+    "Quelle: SWM Preisblätter; Jahreswerte teilweise zusammengefasst.",
+    fontsize=9,
+    color="gray",
+)
+
+plt.tight_layout(rect=[0,0.03,1,1])
+
+plt.savefig("Fernwaerme_Muenchen_2020_2026.png", dpi=300, bbox_inches="tight")
+plt.savefig("Fernwaerme_Muenchen_2020_2026.svg", bbox_inches="tight")
+
+plt.show()
