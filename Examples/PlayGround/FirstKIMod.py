@@ -1,13 +1,22 @@
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, Input
+
+
 
 # a simple model
 
 model = Sequential([
-    Dense(64, activation='relu', input_shape=(784,)),
+    Input(shape=(784,)),
+    Dense(64, activation='relu'),
     Dense(10, activation='softmax')
 ])
+
+# so wars vorher ohne input aber warning !!
+# model = Sequential([
+#    Dense(64, activation='relu', input_shape=(784,)),
+#    Dense(10, activation='softmax')
+# ])
 
 # Compile the model
 model.compile(
