@@ -18,6 +18,7 @@ def diagnose(url):
     start = time.perf_counter()
 
     # 1. DNS-Auflösung
+
     try:
         addresses = socket.getaddrinfo(
             host, port, type=socket.SOCK_STREAM

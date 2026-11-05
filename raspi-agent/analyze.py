@@ -68,12 +68,15 @@ def analyze_service(url, rows):
     print(f"Langsame Antworten: {slow_count}/{len(times)}")
     print(f"Fehler: {errors}/{len(recent)}")
 
-    if errors:
+    if latest is not None and latest.get("ergebnis") == "FEHLER":
         status = "FEHLER"
-        print("BEWERTUNG: Fehler in den letzten Messungen.")
+        print("BEWERTUNG: Aktuelle Messung fehlgeschlagen.")
     elif not times:
         status = "UNBEKANNT"
         print("BEWERTUNG: Keine gültigen Messwerte.")
+    elif errors:
+        status = "WARNUNG"
+        print("BEWERTUNG: Frühere Fehler in den letzten Messungen.")
     elif slow_count >= 3:
         status = "LANGSAM"
         print("BEWERTUNG: Wiederholt langsame Antworten.")
@@ -85,7 +88,6 @@ def analyze_service(url, rows):
         print("BEWERTUNG: Aktuell unauffällig.")
 
     return status
-
 
 def main():
     if not CSV_FILE.exists():
